@@ -1,0 +1,94 @@
+﻿Creating a distribution file on Windows
+If you are running on Windows, open a command prompt in the folder that
+contains your three files, vsearch.py, setup.py, README.txt,  then enter this command:
+say:
+    C:\Users\Head First\mymodules> py -3 setup.py sdist
+The Python interpreter goes to work immediately after you issue this
+command. A large number of messages appear on screen (which we show
+here in an abridged form):
+
+ running sdist
+ running egg_info
+ creating vsearch.egg-info
+ ...
+ creating dist
+ creating 'dist\vsearch-1.0.zip' and adding 'vsearch-1.0' to it
+ adding 'vsearch-1.0\PKG-INFO'
+ adding 'vsearch-1.0\README.txt'
+ ...
+ adding 'vsearch-1.0\vsearch.egg-info\top_level.txt'
+ removing 'vsearch-1.0' (and everything under it)
+
+When the Windows command prompt reappears, your three files have
+been combined into a single distribution file. This is an installable file
+that contains the source code for your module and, in this case, is called
+vsearch-1.0.zip.
+ You’ll find your newly created ZIP file in a folder called dist, which has also
+been created by setuptools under the folder you are working in.
+
+********************************************************************************************
+
+Distribution Files on UNIX-like OSes
+ code reuse
+ If you are not working on Windows, you can create a distribution file in much
+the same way as on the previous page. With the three files (setup.py,
+README.txt, and vsearch.py) in a folder, issue this command at your
+operating system’s command line:
+
+  mymodules$ python3 setup.py sdist
+
+Like on Windows, this command produces a slew of messages on screen:
+ running sdist
+ running egg_info
+ creating vsearch.egg-info
+ ...
+ running check
+ creating vsearch-1.0
+ creating vsearch-1.0/vsearch.egg-info
+ ...
+ creating dist
+ Creating tar archive
+ removing 'vsearch-1.0’ (and everything under it)
+
+When your operating system’s command line reappears, your three files have
+been combined into a source distribution file.
+This is an installable file that contains the source code for your
+module and, in this case, is called vsearch-1.0.tar.gz.
+ You’ll find your newly created archive file in a folder called dist, which
+has also been created by setuptools under the folder you are working in
+(which is mymodules in our case)
+
+*********************************************************************************
+
+Installation of the distribution file (Windows)
+
+Locate your newly created ZIP file under the dist folder (recall that the file is
+called vsearch-1.0.zip). While in the Windows Explorer, hold down the Shift
+key, then right-click your mouse to bring up a context-sensitive menu. Select Open
+command window here from this menu. A new Windows command prompt opens. At this
+command prompt, type this line to complete the Step:
+
+ C:\Users\...\dist> py -3 -m pip install vsearch-1.0.zip
+
+If this command fails with a permissions error, you may need to restart the command
+prompt as the Windows administrator, then try again.
+
+When the above command succeeds, the following messages appear on screen:
+
+ Processing c:\users\...\dist\vsearch-1.0.zip
+ Installing collected packages: vsearch
+ Running setup.py install for vsearch
+ Successfully installed vsearch-1.0
+
+******************************************************************************
+
+  .../dist$ sudo python3 -m pip install vsearch-1.0.tar.gz
+
+When the above command succeeds, the following messages appear on screen:
+
+ Processing ./vsearch-1.0.tar.gz
+ Installing collected packages: vsearch
+ Running setup.py install for vsearch
+ Successfully installed vsearch-1.0
+
+The vsearch module is now installed as part of site-packages.
